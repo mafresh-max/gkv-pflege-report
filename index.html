@@ -52,10 +52,25 @@
     text-underline-offset:2px;text-decoration-color:var(--line-strong)}
   a:hover{text-decoration-color:var(--clay)}
   .lead{font-size:19px;color:var(--ink)}
+  /* ---------- STICKY NAV ---------- */
+  nav.toc{position:sticky;top:0;z-index:30;background:rgba(244,241,232,.92);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -24px 6px;padding:11px 24px;
+    display:flex;flex-wrap:wrap;gap:5px}
+  nav.toc a{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;
+    padding:5px 11px;border-radius:20px;white-space:nowrap}
+  nav.toc a:hover{background:var(--card-2);color:var(--ink)}
+  nav.toc a.active{background:var(--clay-bg);color:var(--clay-deep)}
+  @media(max-width:620px){nav.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}}
   /* ---------- VERDICT ---------- */
   .verdict{background:var(--card);border:1px solid var(--line-strong);border-radius:16px;
-    padding:26px 28px;margin:24px 0;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .verdict:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--clay)}
+    padding:26px 28px;margin:24px 0;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:165px 1fr;gap:26px;align-items:start}
+  @media(max-width:620px){.verdict{grid-template-columns:1fr;gap:16px;padding:22px 22px}}
+  .verdict .vmark{border-right:1px solid var(--line);padding-right:24px}
+  @media(max-width:620px){.verdict .vmark{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:16px}}
+  .verdict .vmark .big{font-family:var(--serif);font-weight:600;font-size:52px;line-height:.92;
+    color:var(--clay);letter-spacing:-.02em}
+  .verdict .vmark .sub{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-soft);margin-top:4px}
   .verdict .vl{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;
     text-transform:uppercase;color:var(--clay);margin-bottom:10px}
   .verdict p{margin:6px 0;font-size:18px;color:var(--ink)}
@@ -155,19 +170,36 @@
   </div>
 </header>
 
+<nav class="toc">
+  <a href="#kern">Der Kern</a>
+  <a href="#leistungen">Leistungen</a>
+  <a href="#fonds">Fonds</a>
+  <a href="#zahlen">Zahlen</a>
+  <a href="#mechanik">Mechanik</a>
+  <a href="#ausblick">Ausblick</a>
+  <a href="#pflege">Pflege</a>
+  <a href="#branche">Branche</a>
+  <a href="#einordnung">Einordnung</a>
+  <a href="#begriffe">Begriffe</a>
+  <a href="#quellen">Quellen</a>
+</nav>
+
 <!-- ===================== KERNBEFUND ===================== -->
-<section>
+<section id="kern">
   <span class="sec-num">Der Kern</span>
   <h2>Kurz gesagt: nein — aber teuer.</h2>
   <div class="verdict">
-    <div class="vl">Das Wichtigste zuerst</div>
-    <p>Keine gesetzliche Krankenkasse ist „pleite" — eine Insolvenz ist gesetzlich praktisch ausgeschlossen.
-    Ein Hauptgrund ist der zentrale <strong>Ausgleichsfonds</strong>: Er sammelt alle Beiträge und verteilt sie
-    nach Krankheitslast an die Kassen um. <strong>Ohne ihn wären einzelne Kassen sehr wohl zahlungsunfähig</strong> —
-    er ist die Stabilitäts- und Umverteilungsmaschine des Systems, keine eigene Geldquelle.</p>
-    <p>Deshalb kann das System nicht zusammenbrechen — aber es wird <strong>teurer und dünner</strong>: Die
-    Beiträge steigen <em>und</em> der Leistungskatalog wird beschnitten, um die wachsende Finanzierungslücke zu
-    schließen. Der eigentliche Brandherd ist dabei nicht die Kranken-, sondern die <strong>Pflegeversicherung</strong>.</p>
+    <div class="vmark"><div class="big">Nein.</div><div class="sub">— aber teuer.</div></div>
+    <div class="vbody">
+      <div class="vl">Das Wichtigste zuerst</div>
+      <p>Keine gesetzliche Krankenkasse ist „pleite" — eine Insolvenz ist gesetzlich praktisch ausgeschlossen.
+      Ein Hauptgrund ist der zentrale <strong>Ausgleichsfonds</strong>: Er sammelt alle Beiträge und verteilt sie
+      nach Krankheitslast an die Kassen um. <strong>Ohne ihn wären einzelne Kassen sehr wohl zahlungsunfähig</strong> —
+      er ist die Stabilitäts- und Umverteilungsmaschine des Systems, keine eigene Geldquelle.</p>
+      <p>Deshalb kann das System nicht zusammenbrechen — aber es wird <strong>teurer und dünner</strong>: Die
+      Beiträge steigen <em>und</em> der Leistungskatalog wird beschnitten, um die wachsende Finanzierungslücke zu
+      schließen. Der eigentliche Brandherd ist dabei nicht die Kranken-, sondern die <strong>Pflegeversicherung</strong>.</p>
+    </div>
   </div>
   <div class="kpis">
     <div class="kpi"><div class="v red">~19 Mrd €</div>
@@ -218,7 +250,7 @@
 </section>
 
 <!-- ===================== LEISTUNGSKÜRZUNGEN ===================== -->
-<section>
+<section id="leistungen">
   <span class="sec-num">Teurer — und dünner</span>
   <h2>Die andere Hälfte der Wahrheit: Leistungskürzungen</h2>
   <p class="lead">Um die Milliardenlücke zu schließen, steht nicht nur der Beitrag zur Debatte, sondern auch
@@ -257,7 +289,7 @@
 </section>
 
 <!-- ===================== AUSGLEICHSFONDS ===================== -->
-<section>
+<section id="fonds">
   <span class="sec-num">Der Ausgleichsfonds</span>
   <h2>Das Rückgrat, das die Kassen zusammenhält</h2>
   <p class="lead">Der <strong>Gesundheitsfonds</strong> — oft Ausgleichsfonds genannt, weil er den Ausgleich
@@ -370,7 +402,7 @@ flowchart TD
 </section>
 
 <!-- ===================== IST-ZUSTAND ===================== -->
-<section>
+<section id="zahlen">
   <span class="sec-num">Ist-Zustand 2026</span>
   <h2>Die harten Zahlen</h2>
 
@@ -418,7 +450,7 @@ flowchart TD
 </section>
 
 <!-- ===================== MECHANIK ===================== -->
-<section>
+<section id="mechanik">
   <span class="sec-num">Wie es funktioniert</span>
   <h2>Warum das System nicht pleitegeht — aber teurer wird</h2>
   <p>Vier Mechanismen erklären fast alles:</p>
@@ -460,7 +492,7 @@ flowchart TD
 </section>
 
 <!-- ===================== AUSBLICK ===================== -->
-<section>
+<section id="ausblick">
   <span class="sec-num">Ausblick</span>
   <h2>Die nächsten 5, 10 und 15 Jahre</h2>
   <div class="note">
@@ -503,7 +535,7 @@ flowchart TD
 </section>
 
 <!-- ===================== PFLEGE DETAIL ===================== -->
-<section>
+<section id="pflege">
   <span class="sec-num">Pflege im Detail</span>
   <h2>Pflegegrade heute — und was sich ändert</h2>
 
@@ -588,7 +620,7 @@ flowchart TD
 </section>
 
 <!-- ===================== ANBIETERSEITE / BRANCHE ===================== -->
-<section>
+<section id="branche">
   <span class="sec-num">Die Anbieterseite</span>
   <h2>Nicht die Kassen — die Pflege-Anbieter gehen pleite</h2>
   <p class="lead">Eine oft übersehene Seite: Während die Kassen strukturell abgesichert sind, geraten ihre
@@ -640,7 +672,7 @@ flowchart TD
 </section>
 
 <!-- ===================== EINORDNUNG ===================== -->
-<section>
+<section id="einordnung">
   <span class="sec-num">Einordnung</span>
   <h2>Was das für Versicherte bedeutet</h2>
   <ul class="rich">
@@ -658,7 +690,7 @@ flowchart TD
 </section>
 
 <!-- ===================== SCHLÜSSEL ===================== -->
-<section>
+<section id="begriffe">
   <span class="sec-num">Zum Weiterdenken</span>
   <h2>Sechs Begriffe, die alles erklären</h2>
   <div class="keys">
@@ -691,7 +723,7 @@ flowchart TD
 </section>
 
 <!-- ===================== QUELLEN ===================== -->
-<section>
+<section id="quellen">
   <span class="sec-num">Quellen</span>
   <h2>Zum Nachlesen</h2>
   <ul class="src">
@@ -742,6 +774,16 @@ flowchart TD
       }
     });
   }catch(e){}
+</script>
+<script>
+(function(){
+  var links=document.querySelectorAll('nav.toc a');
+  var map={}; links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){a.classList.remove('active');}); if(map[e.target.id])map[e.target.id].classList.add('active'); }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(sec){obs.observe(sec);});
+})();
 </script>
 </body>
 </html>
