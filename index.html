@@ -66,7 +66,8 @@
   .kpi .v{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;letter-spacing:-.02em;
     font-variant-numeric:tabular-nums;color:var(--ink)}
   .kpi .v.red{color:var(--red)} .kpi .v.green{color:var(--green)} .kpi .v.amber{color:var(--amber)}
-  .kpi .k{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
+  .kpi .k{font-size:14px;color:var(--ink-soft);margin-top:8px;line-height:1.45;font-weight:600}
+  .kpi .why{font-size:12.5px;color:var(--muted);margin-top:9px;padding-top:9px;border-top:1px solid var(--line);line-height:1.5}
   /* ---------- TABLE ---------- */
   .tbl-wrap{margin:20px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
   table{border-collapse:collapse;width:100%;font-size:15px}
@@ -169,10 +170,18 @@
     sondern die <strong>Pflegeversicherung</strong>.</p>
   </div>
   <div class="kpis">
-    <div class="kpi"><div class="v red">~19 Mrd €</div><div class="k">strukturelle Finanzierungslücke der Krankenversicherung — wächst weiter</div></div>
-    <div class="kpi"><div class="v amber">3,13 %</div><div class="k">durchschnittlicher Zusatzbeitrag Anfang 2026 — in zwei Jahren fast verdoppelt</div></div>
-    <div class="kpi"><div class="v red">~4,2 Mrd €</div><div class="k">Defizit der Pflegeversicherung 2026 (inkl. Bundesdarlehen)</div></div>
-    <div class="kpi"><div class="v green">+1,3 Mrd €</div><div class="k">Überschuss der Kassen im 1. Quartal 2026 — erste Erholung seit Ende 2024</div></div>
+    <div class="kpi"><div class="v red">~19 Mrd €</div>
+      <div class="k">strukturelle Finanzierungslücke der Krankenversicherung — <strong>pro Jahr</strong></div>
+      <div class="why">So viel mehr fließt jährlich aus den Kassen raus, als planbar reinkommt. Diese Lücke wird über steigende Zusatzbeiträge gedeckt.</div></div>
+    <div class="kpi"><div class="v amber">3,13 %</div>
+      <div class="k">durchschnittlicher Zusatzbeitrag Anfang 2026 — in zwei Jahren fast verdoppelt</div>
+      <div class="why">Kommt <em>on top</em> zum festen Beitragssatz (14,6 % vom Lohn). Jede Kasse legt ihn selbst fest — er ist ihre Stellschraube gegen Defizite.</div></div>
+    <div class="kpi"><div class="v red">~4,2 Mrd €</div>
+      <div class="k">Defizit der Pflegeversicherung — <strong>pro Jahr (2026)</strong></div>
+      <div class="why">2026 vom Bund per <strong>rückzahlbarem Darlehen</strong> überbrückt, nicht per Zuschuss. Dauerhaft zahlen es die Beitragszahler über höhere Beiträge.</div></div>
+    <div class="kpi"><div class="v green">+1,3 Mrd €</div>
+      <div class="k">Überschuss der Kassen im 1. Quartal 2026</div>
+      <div class="why">„Plötzlich" nur, weil die Zusatzbeiträge stark stiegen — nicht weil das Grundproblem gelöst ist. Die Erholung ist geliehene Zeit.</div></div>
   </div>
   <p>Woher kommt dann das Gefühl, „die Kassen sind pleite"? Aus einem realen Kern: Ende 2024 waren die
   Rücklagen fast aufgebraucht, und seither steigen die Beiträge spürbar. Das ist keine Insolvenz — es ist
