@@ -171,8 +171,8 @@
   </div>
   <div class="kpis">
     <div class="kpi"><div class="v red">~19 Mrd €</div>
-      <div class="k">strukturelle Finanzierungslücke der Krankenversicherung — <strong>pro Jahr</strong></div>
-      <div class="why">So viel mehr fließt jährlich aus den Kassen raus, als planbar reinkommt. Diese Lücke wird über steigende Zusatzbeiträge gedeckt.</div></div>
+      <div class="k">Finanzierungslücke der Krankenversicherung — <strong>fürs kommende Jahr</strong>, Tendenz steigend</div>
+      <div class="why">Kein jahrelanger Dauerwert, sondern die aktuell prognostizierte Jahreslücke. Sie ist zuletzt stark gewachsen (Ø-Zusatzbeitrag 2023: 1,6 % → 2026: 2,9 %) und steigt weiter — bis 2027 um geschätzt weitere 12–16 Mrd €.</div></div>
     <div class="kpi"><div class="v amber">3,13 %</div>
       <div class="k">durchschnittlicher Zusatzbeitrag Anfang 2026 — in zwei Jahren fast verdoppelt</div>
       <div class="why">Kommt <em>on top</em> zum festen Beitragssatz (14,6 % vom Lohn). Jede Kasse legt ihn selbst fest — er ist ihre Stellschraube gegen Defizite.</div></div>
@@ -184,9 +184,12 @@
       <div class="why">„Plötzlich" nur, weil die Zusatzbeiträge stark stiegen — nicht weil das Grundproblem gelöst ist. Die Erholung ist geliehene Zeit.</div></div>
   </div>
   <p>Woher kommt dann das Gefühl, „die Kassen sind pleite"? Aus einem realen Kern: Ende 2024 waren die
-  Rücklagen fast aufgebraucht, und seither steigen die Beiträge spürbar. Das ist keine Insolvenz — es ist
-  eine <strong>chronische Unterfinanzierung</strong>, die über höhere Beiträge auf die Versicherten
-  umgelegt wird.</p>
+  Rücklagen auf <strong>2,1 Mrd €</strong> gefallen — nur 0,08 Monatsausgaben, keine drei Tage Kassenbetrieb,
+  unter der gesetzlichen Mindestreserve. Zum Ausgleich sprang der durchschnittliche Zusatzbeitrag von
+  <strong>1,7 % (2024) auf 2,9 % (2026)</strong> — allein 2025 um 0,8 Prozentpunkte, der größte Einzelsprung
+  seit Einführung; tatsächlich erheben die Kassen im Schnitt sogar 3,13 %. Das ist keine Insolvenz — es ist
+  eine <strong>chronische Unterfinanzierung</strong>, die über höhere Beiträge auf die Versicherten umgelegt
+  wird.</p>
 
   <h3>„Pleite? Nein" — warum das betriebswirtschaftlich stimmt</h3>
   <p>Eine Pleite ist juristisch eng definiert: Zahlungsunfähigkeit oder Überschuldung. Beide Tatbestände
@@ -291,6 +294,35 @@ flowchart TD
     <div class="cap">Der Fonds sammelt zentral und verteilt nach Krankheitslast um. Wichtig: Er erzeugt kein
     Geld — er organisiert Solidarität und Puffer.</div>
   </div>
+
+  <details class="pd">
+    <summary>Die großen Kassen im Überblick — wer ist wer?</summary>
+    <div class="pd-body">
+      <p>Rund <strong>74,5 Mio Menschen</strong> (89 % der Bevölkerung) sind gesetzlich versichert, verteilt auf
+      gut 90 Kassen in fünf Arten: <strong>Ersatzkassen</strong> (TK, Barmer, DAK, KKH, hkk, HEK),
+      <strong>Ortskrankenkassen</strong> (die 11 regionalen AOKs), <strong>Betriebskrankenkassen</strong> (die
+      vielen BKKs), <strong>Innungskrankenkassen</strong> (IKK) und die <strong>Knappschaft</strong>. Die größten:</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Kasse</th><th>Art</th><th class="num">Versicherte</th></tr></thead>
+          <tbody>
+            <tr><td>Techniker (TK)</td><td>Ersatzkasse</td><td class="num">~12,3 Mio</td></tr>
+            <tr><td>BARMER</td><td>Ersatzkasse</td><td class="num">~8,2 Mio</td></tr>
+            <tr><td>DAK-Gesundheit</td><td>Ersatzkasse</td><td class="num">~5,4 Mio</td></tr>
+            <tr><td>AOK Bayern</td><td>Ortskrankenkasse</td><td class="num">~4,7 Mio</td></tr>
+            <tr><td>AOK Baden-Württemberg</td><td>Ortskrankenkasse</td><td class="num">~4,3 Mio</td></tr>
+            <tr><td>AOK Nordwest · PLUS · Niedersachsen · Rheinland/Hamburg</td><td>Ortskrankenkassen</td><td class="num">je ~2,8–2,9 Mio</td></tr>
+            <tr><td>IKK classic</td><td>Innungskasse</td><td class="num">~2,8 Mio</td></tr>
+            <tr><td>Knappschaft</td><td>eigene Art</td><td class="num">~1,2 Mio</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="disc">Faustregel zur Umverteilung: Kassen mit älterer, kränkerer oder einkommensschwächerer
+      Mitgliedschaft (klassisch die AOKs und die Knappschaft mit ihrer Bergbau-Historie) sind tendenziell
+      Netto-Empfänger aus dem Fonds; Kassen mit jüngeren, gesünderen Versicherten eher Netto-Zahler. Genau
+      diese Unterschiede gleicht der Morbi-RSA aus.</p>
+    </div>
+  </details>
 
   <div class="note warm">
     <div class="nl">Wären die Kassen ohne den Ausgleichsfonds pleite?</div>
@@ -600,9 +632,22 @@ flowchart TD
   </div>
   <div class="note">
     <div class="nl">Die eine Frage dahinter</div>
-    <p><strong>Wer trägt die Last der alternden Gesellschaft — die Beitragszahler, die Steuerzahler oder die
-    Versicherten über höhere Eigenanteile?</strong> Jede Reform der nächsten 15 Jahre ist im Kern eine Antwort
-    auf genau diese Frage.</p>
+    <p><strong>Wer trägt die Last der alternden Gesellschaft?</strong> Auf den ersten Blick drei Gruppen —
+    Beitragszahler, Steuerzahler, Versicherte mit Eigenanteil. Doch das sind <strong>größtenteils dieselben
+    Menschen</strong>, nur über verschiedene Kanäle belastet. Entscheidend ist nicht <em>wer</em> zahlt, sondern
+    <em>über welchen Kanal</em> — denn die Verteilungswirkung ist völlig unterschiedlich:</p>
+    <div class="tbl-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Kanal</th><th>zahlt konkret</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Beitrag</strong></td><td>nur sozialversicherungspflichtig Beschäftigte + Arbeitgeber, gedeckelt</td><td>trifft die <strong>Mitte</strong> am stärksten; Gutverdiener, Beamte und PKV-Versicherte zahlen relativ weniger oder gar nicht ein</td></tr>
+          <tr><td><strong>Steuer</strong></td><td>alle, progressiv nach Einkommen</td><td>breiteste und nach Einkommen <strong>gerechteste</strong> Schultern</td></tr>
+          <tr><td><strong>Eigenanteil</strong></td><td>die Kranken selbst, unabhängig vom Einkommen</td><td><strong>regressiv</strong> — trifft Ärmere und Kränkere am härtesten</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Jede Reform der nächsten 15 Jahre ist im Kern eine Entscheidung über <em>diese</em> Verteilung — nicht
+    über drei verschiedene Gruppen von Menschen.</p>
   </div>
 </section>
 
