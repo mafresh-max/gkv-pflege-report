@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kranken- &amp; Pflegeversicherung in Deutschland — wie steht es wirklich?</title>
+<meta name="description" content="Neutraler Faktenreport zur Finanzlage von GKV, Gesundheitsfonds und Pflegeversicherung 2026 — mit Ausblick auf die nächsten 15 Jahre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root{
+    --paper:#f4f1e8; --card:#fffdf8; --card-2:#faf6ec;
+    --ink:#26231c; --ink-soft:#4a4438; --muted:#7c7361; --faint:#a89e88;
+    --line:#e6dfcd; --line-strong:#d8cfb8;
+    --clay:#b8552f; --clay-deep:#96431f; --clay-bg:#f2e2d6;
+    --green:#4b7a4e; --green-bg:#e7efe0;
+    --amber:#a4741f; --amber-bg:#f5e9cf;
+    --red:#b0402c; --red-bg:#f4ded5;
+    --shadow:0 1px 2px rgba(60,45,25,.05), 0 10px 30px -18px rgba(60,45,25,.28);
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px 90px}
+  /* ---------- HERO ---------- */
+  header.hero{padding:66px 0 30px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--clay);margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,50px);line-height:1.08;
+    letter-spacing:-.015em;margin:0 0 20px;color:var(--ink)}
+  .dek{font-family:var(--serif);font-weight:400;font-size:clamp(18px,2.4vw,22px);line-height:1.5;
+    color:var(--ink-soft);margin:0 0 26px;font-style:italic}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13.5px;color:var(--muted)}
+  .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--faint)}
+  /* ---------- SECTION ---------- */
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,31px);line-height:1.15;
+    letter-spacing:-.01em;margin:0 0 6px;color:var(--ink)}
+  .sec-num{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--clay);display:block;margin-bottom:12px}
+  h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:30px 0 8px;color:var(--ink)}
+  p{margin:14px 0;color:var(--ink-soft)}
+  strong{color:var(--ink);font-weight:600}
+  em{font-style:italic}
+  a{color:var(--clay-deep);text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:2px;text-decoration-color:var(--line-strong)}
+  a:hover{text-decoration-color:var(--clay)}
+  .lead{font-size:19px;color:var(--ink)}
+  /* ---------- VERDICT ---------- */
+  .verdict{background:var(--card);border:1px solid var(--line-strong);border-radius:16px;
+    padding:26px 28px;margin:24px 0;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .verdict:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--clay)}
+  .verdict .vl{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+  .verdict p{margin:6px 0;font-size:18px;color:var(--ink)}
+  /* ---------- KPI ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:26px 0}
+  @media(max-width:620px){.kpis{grid-template-columns:1fr}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .kpi .v{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;color:var(--ink)}
+  .kpi .v.red{color:var(--red)} .kpi .v.green{color:var(--green)} .kpi .v.amber{color:var(--amber)}
+  .kpi .k{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
+  /* ---------- TABLE ---------- */
+  .tbl-wrap{margin:20px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  caption{text-align:left;font-family:var(--serif);font-weight:600;font-size:17px;padding:16px 20px 4px;color:var(--ink)}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
+  thead th{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);background:var(--card-2)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--ink)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:var(--card-2)}
+  .pill{display:inline-block;font-size:12px;font-weight:600;border-radius:20px;padding:2px 11px;line-height:1.5;white-space:nowrap}
+  .p-green{color:var(--green);background:var(--green-bg)} .p-amber{color:var(--amber);background:var(--amber-bg)}
+  .p-red{color:var(--red);background:var(--red-bg)} .p-clay{color:var(--clay-deep);background:var(--clay-bg)}
+  /* ---------- CALLOUT ---------- */
+  .note{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:22px 0}
+  .note .nl{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--clay);margin-bottom:8px}
+  .note.warm{background:var(--clay-bg);border-color:#e6cbb8}
+  .note p{margin:6px 0}
+  /* ---------- LIST ---------- */
+  ul.rich{list-style:none;padding:0;margin:16px 0}
+  ul.rich li{position:relative;padding:9px 0 9px 26px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+  ul.rich li:last-child{border-bottom:none}
+  ul.rich li:before{content:"";position:absolute;left:2px;top:17px;width:7px;height:7px;border-radius:50%;
+    background:var(--clay);opacity:.55}
+  ul.rich li strong{color:var(--ink)}
+  /* ---------- TIMELINE ---------- */
+  .tl{position:relative;padding:4px 0 22px 30px;border-left:2px solid var(--line-strong);margin-left:6px}
+  .tl:last-child{border-left-color:transparent;padding-bottom:0}
+  .tl:before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;
+    background:var(--card);border:3px solid var(--clay)}
+  .tl.soft:before{border-color:var(--amber)} .tl.hard:before{border-color:var(--red)}
+  .tl .yr{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink)}
+  .tl .bd{font-size:15px;color:var(--ink-soft);margin-top:3px}
+  /* ---------- MERMAID ---------- */
+  .diagram{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 12px;margin:22px 0;text-align:center}
+  .diagram .cap{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;padding:0 12px}
+  /* ---------- KEYS GRID ---------- */
+  .keys{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  @media(max-width:620px){.keys{grid-template-columns:1fr}}
+  .key{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .key .kt{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--clay-deep);margin-bottom:4px}
+  .key .kb{font-size:14px;color:var(--ink-soft);line-height:1.5}
+  /* ---------- SOURCES ---------- */
+  .src{font-size:15px;margin:14px 0}
+  .src li{margin:10px 0;color:var(--ink-soft)}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .legend .pill{font-size:11.5px}
+  footer{padding:34px 0 0;color:var(--muted);font-size:13.5px;text-align:center;line-height:1.6}
+  .disc{font-size:13.5px;color:var(--muted);font-style:italic}
+  /* ---------- FAKT/ANNAHME-MARKER ---------- */
+  .mark{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:1px 8px;
+    border-radius:20px;vertical-align:middle;text-transform:uppercase;white-space:nowrap}
+  .mark.f{color:var(--green);background:var(--green-bg)}
+  .mark.a{color:var(--clay-deep);background:var(--clay-bg)}
+  h3 .mark{margin-left:8px;position:relative;top:-1px}
+  .mark-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);
+    margin:2px 0 20px;padding:12px 16px;background:var(--card-2);border:1px solid var(--line);border-radius:10px}
+  .mark-legend span.li{display:inline-flex;align-items:center;gap:7px}
+  /* ---------- PROGRESSIVE DISCLOSURE ---------- */
+  details.pd{border:1px solid var(--line-strong);border-radius:12px;background:var(--card-2);margin:16px 0;overflow:hidden}
+  details.pd summary{cursor:pointer;padding:15px 18px;font-family:var(--sans);font-weight:600;font-size:15px;
+    color:var(--clay-deep);list-style:none;display:flex;align-items:center;gap:11px}
+  details.pd summary::-webkit-details-marker{display:none}
+  details.pd summary:before{content:"+";font-size:19px;line-height:1;color:var(--clay);width:15px;text-align:center;flex:none}
+  details.pd[open] summary:before{content:"\2013"}
+  details.pd summary:hover{background:var(--card)}
+  details.pd .pd-body{padding:4px 20px 16px;border-top:1px solid var(--line)}
+  details.pd .pd-body p{margin:11px 0;font-size:15px}
+  details.pd .pd-body ul.rich{margin:10px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <p class="kicker">Faktenreport · Deutschland</p>
+  <h1>Sind die Krankenkassen pleite?</h1>
+  <p class="dek">Ein nüchterner Blick auf die Finanzlage von gesetzlicher Kranken- und Pflegeversicherung —
+  was 2026 wirklich stimmt, wie das System funktioniert und wohin es in den nächsten 15 Jahren läuft.</p>
+  <div class="meta">
+    <span>Stand: 1. Juli 2026</span><span class="dot"></span>
+    <span>Quellen: Bundesgesundheitsministerium, Bundesrechnungshof, Finanzkommission Gesundheit</span>
+  </div>
+</header>
+
+<!-- ===================== KERNBEFUND ===================== -->
+<section>
+  <span class="sec-num">Der Kern</span>
+  <h2>Kurz gesagt: nein — aber teuer.</h2>
+  <div class="verdict">
+    <div class="vl">Das Wichtigste zuerst</div>
+    <p>Keine gesetzliche Krankenkasse ist „pleite" — eine Insolvenz ist gesetzlich praktisch
+    ausgeschlossen. Das System kann nicht zusammenbrechen, es wird nur <strong>teurer</strong>: Die Beiträge
+    steigen, um eine wachsende Finanzierungslücke zu schließen. Der eigentliche Brandherd ist dabei nicht
+    die Kranken-, sondern die <strong>Pflegeversicherung</strong>.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="v red">~19 Mrd €</div><div class="k">strukturelle Finanzierungslücke der Krankenversicherung — wächst weiter</div></div>
+    <div class="kpi"><div class="v amber">3,13 %</div><div class="k">durchschnittlicher Zusatzbeitrag Anfang 2026 — in zwei Jahren fast verdoppelt</div></div>
+    <div class="kpi"><div class="v red">~4,2 Mrd €</div><div class="k">Defizit der Pflegeversicherung 2026 (inkl. Bundesdarlehen)</div></div>
+    <div class="kpi"><div class="v green">+1,3 Mrd €</div><div class="k">Überschuss der Kassen im 1. Quartal 2026 — erste Erholung seit Ende 2024</div></div>
+  </div>
+  <p>Woher kommt dann das Gefühl, „die Kassen sind pleite"? Aus einem realen Kern: Ende 2024 waren die
+  Rücklagen fast aufgebraucht, und seither steigen die Beiträge spürbar. Das ist keine Insolvenz — es ist
+  eine <strong>chronische Unterfinanzierung</strong>, die über höhere Beiträge auf die Versicherten
+  umgelegt wird.</p>
+
+  <h3>„Pleite? Nein" — warum das betriebswirtschaftlich stimmt</h3>
+  <p>Eine Pleite ist juristisch eng definiert: Zahlungsunfähigkeit oder Überschuldung. Beide Tatbestände
+  greifen bei einer gesetzlichen Kasse strukturell nicht.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Insolvenzgrund</th><th>Bei einem Unternehmen</th><th>Bei einer gesetzlichen Kasse</th></tr></thead>
+      <tbody>
+        <tr><td>Zahlungsunfähigkeit <span style="color:var(--muted)">(§ 17 InsO)</span></td><td>Fällige Rechnungen bleiben offen → Insolvenz</td><td>Der <strong>Zusatzbeitrag</strong> wird angehoben — die Kasse hat ein einseitiges Preissetzungsrecht auf ihre beitragspflichtigen Mitglieder</td></tr>
+        <tr><td>Überschuldung <span style="color:var(--muted)">(§ 19 InsO)</span></td><td>Schulden &gt; Vermögen → Insolvenz</td><td><strong>Kaum anwendbar</strong>: Umlagefinanzierung ohne bilanzierte Rückstellungen für künftige Leistungen (anders als bei der privaten Kasse)</td></tr>
+        <tr><td>Gläubigerausfall</td><td>Gläubiger verlieren Geld, der Betrieb wird zerschlagen</td><td><strong>Haftungsverbund</strong>: die übrigen Kassen übernehmen die Verbindlichkeiten (§ 155/160 SGB V)</td></tr>
+        <tr><td>Versorgung</td><td>Der Betrieb endet</td><td>Versicherte wechseln nahtlos, der Leistungsanspruch bleibt lückenlos</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Was in der Realität passiert, ist deshalb nie eine Insolvenz, sondern eine von drei weichen Anpassungen:
+  <strong>Beitrag rauf, Fusion mit einer anderen Kasse, oder Leistungen verdichten.</strong> Das trifft die
+  Versicherten — als Preis, nicht als Versorgungslücke.</p>
+</section>
+
+<!-- ===================== AUSGLEICHSFONDS ===================== -->
+<section>
+  <span class="sec-num">Der Ausgleichsfonds</span>
+  <h2>Das Rückgrat, das die Kassen zusammenhält</h2>
+  <p class="lead">Der <strong>Gesundheitsfonds</strong> — oft Ausgleichsfonds genannt, weil er den Ausgleich
+  zwischen den Kassen organisiert — ist der zentrale Geldknoten des Systems. Seit 2009 fließt hier alles
+  zusammen, verwaltet vom Bundesamt für Soziale Sicherung.</p>
+
+  <h3>Drei Aufgaben</h3>
+  <ul class="rich">
+    <li><strong>Sammeln.</strong> Alle Beiträge (einheitlich 14,6 % vom Lohn) plus der Bundeszuschuss fließen
+    zentral in den Fonds — nicht mehr an die einzelnen Kassen direkt.</li>
+    <li><strong>Ausgleichen (Morbi-RSA).</strong> Der Fonds verteilt das Geld nach der <em>Krankheitslast</em>
+    zurück: Eine Kasse mit vielen alten oder chronisch kranken Mitgliedern bekommt pro Kopf deutlich mehr als
+    eine mit jungen, gesunden. Genau das ist der „Ausgleich" — der morbiditätsorientierte
+    Risikostrukturausgleich.</li>
+    <li><strong>Puffern.</strong> Eine gesetzliche Liquiditätsreserve (2026: mindestens 22,5 % einer
+    Monatsausgabe) fängt unterjährige Schwankungen ab.</li>
+  </ul>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+    A["Versicherte + Arbeitgeber"] -->|"Beiträge 14,6 %"| F
+    B["Bund"] -->|"Zuschuss"| F
+    F["GESUNDHEITSFONDS / Ausgleichsfonds<br/>zentrale Sammlung + Liquiditätsreserve"] -->|"Morbi-RSA: mehr Geld<br/>für kränkere Versicherte"| G["Zuweisung an jede Kasse"]
+    G --> K1["Kassen mit vielen Kranken<br/>(z. B. AOK, Knappschaft)"]
+    G --> K2["Kassen mit jüngeren,<br/>gesünderen Mitgliedern"]
+    classDef fund fill:#f2e2d6,stroke:#b8552f,color:#26231c;
+    classDef inp fill:#faf6ec,stroke:#d8cfb8,color:#26231c;
+    classDef out fill:#e7efe0,stroke:#4b7a4e,color:#26231c;
+    class F fund; class A,B inp; class G,K1,K2 out;
+    </div>
+    <div class="cap">Der Fonds sammelt zentral und verteilt nach Krankheitslast um. Wichtig: Er erzeugt kein
+    Geld — er organisiert Solidarität und Puffer.</div>
+  </div>
+
+  <div class="note warm">
+    <div class="nl">Wären die Kassen ohne den Ausgleichsfonds pleite?</div>
+    <p><strong>Einzelne ja — das System als Ganzes nein.</strong> Ohne den Risikostrukturausgleich wären
+    Kassen mit ungünstiger Mischung (viele Kranke, Alte, Geringverdiener — klassisch die AOKs und die
+    Knappschaft) sofort zahlungsunfähig, während Kassen mit jungen Gutverdienern Überschüsse anhäuften. Es
+    käme zur <em>Risikoselektion</em> — dem Wettlauf um die „billigen", gesunden Mitglieder — und das System
+    risse in Gewinner und Verlierer auseinander.</p>
+    <p>Aber: Der Fonds <strong>schafft kein zusätzliches Geld</strong>. Die Gesamt-Finanzierungslücke von
+    ~19 Mrd € bleibt auch mit Fonds und landet über die Zusatzbeiträge bei den Versicherten. Der Fonds ist
+    nicht die Geldquelle, sondern die <strong>Stabilitäts- und Umverteilungsmaschine</strong>: Er verhindert
+    das Auseinanderbrechen einzelner Kassen — nicht die Unterfinanzierung an sich.</p>
+  </div>
+
+  <h3>Und wer zahlt umgekehrt <em>in</em> den Fonds ein?</h3>
+  <p>Normalerweise ist jede Kasse Netto-<em>Empfängerin</em> von Zuweisungen. Zusätzlich gab es aber eine
+  <strong>Vermögensabführung</strong>: Kassen mit Reserven über einem Schwellenwert mussten Geld aus ihren
+  Rücklagen an den Fonds abgeben, um die Beiträge zu stabilisieren. Die TK war dabei mit rund
+  <strong>1,4 Mrd €</strong> der mit Abstand größte Zahler — von gut 8 Mrd €, die alle Kassen zusammen
+  abführten. Daher die Beobachtung, „nur die TK zahlt ein".</p>
+
+  <details class="pd">
+    <summary>Tiefer: Warum die TK Verluste macht — und trotzdem am meisten einzahlt</summary>
+    <div class="pd-body">
+      <p><strong>Der Schlüssel: zwei getrennte Geldebenen.</strong> Man muss laufenden Betrieb und
+      Reservebestand auseinanderhalten — sie haben nichts miteinander zu tun:</p>
+      <ul class="rich">
+        <li><strong>Laufender Betrieb (der Fluss).</strong> Die TK gibt mehr aus, als sie einnimmt — 2024 rund
+        <strong>1,5 Mrd € Verlust</strong>. Das ist die Gewinn-und-Verlust-Ebene: Beiträge plus Zuweisungen
+        gegen Leistungsausgaben.</li>
+        <li><strong>Reservebestand (das Vermögen).</strong> Über Jahre hat die TK als größte Kasse einen absolut
+        hohen Rücklagen-Berg angespart. Aus <em>diesem Bestand</em> wurde abgeführt — nicht aus laufendem Gewinn.
+        Man kann gleichzeitig operativ Verlust machen und ein großes Sparbuch anzapfen.</li>
+      </ul>
+      <p><strong>Warum ausgerechnet die TK dominierte.</strong> Abgeführt hat nur, wer über dem gesetzlichen
+      Reserve-Schwellenwert lag. Die meisten Kassen lagen Ende 2024 aber schon <em>unter</em> der Mindestreserve
+      (im Schnitt 0,08 Monatsausgaben) — sie hatten schlicht nichts abzuführen und waren reine Empfänger. Die TK
+      war groß genug, um selbst nach dem Abschmelzen noch über der Schwelle zu liegen. So wurde sie mit 1,4 von
+      8 Mrd € zum größten Einzahler.</p>
+      <p><strong>Deshalb ist „die einzige" eine Zuspitzung — aber nah dran.</strong> <span class="mark a">Einschätzung</span>
+      Es zahlten mehrere Kassen ein, nur keine annähernd so viel. Ob 2026 buchstäblich nur noch die TK übrig
+      ist, ist plausibel, aber offiziell nicht belegt. Der wahre Kern der Beobachtung stimmt: Die TK ist der
+      einzige wirklich große Netto-Vermögens-Einzahler — weil ihre Größe ihr einen Puffer ließ, den fast alle
+      anderen längst verbraucht haben.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ===================== IST-ZUSTAND ===================== -->
+<section>
+  <span class="sec-num">Ist-Zustand 2026</span>
+  <h2>Die harten Zahlen</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Gesetzliche Krankenversicherung (93 Kassen)</caption>
+      <thead><tr><th>Kennzahl</th><th class="num">Wert</th><th>Einordnung</th></tr></thead>
+      <tbody>
+        <tr><td>Saldo 1. Quartal 2026</td><td class="num">+1,3 Mrd €</td><td><span class="pill p-amber">fragil positiv</span></td></tr>
+        <tr><td>Rücklagen Ende 2024</td><td class="num">2,1 Mrd €</td><td><span class="pill p-red">Tiefpunkt</span> unter Mindestreserve</td></tr>
+        <tr><td>Rücklagen Q1 2026</td><td class="num">6,18 Mrd €</td><td><span class="pill p-amber">Minimum erreicht</span></td></tr>
+        <tr><td>Ø Zusatzbeitrag</td><td class="num">3,13 %</td><td><span class="pill p-red">Treiber</span> Kostendeckend wären 2,9 %</td></tr>
+        <tr><td>Ausgabenwachstum je Jahr</td><td class="num">~7,7 %</td><td><span class="pill p-red">Kernproblem</span> doppelt so schnell wie früher</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Gesundheitsfonds — der „Ausgleichsfonds"</caption>
+      <thead><tr><th>Kennzahl</th><th class="num">Wert</th><th>Einordnung</th></tr></thead>
+      <tbody>
+        <tr><td>Liquiditätsreserve (Jan 2026)</td><td class="num">7,1 Mrd €</td><td><span class="pill p-amber">wird angezapft</span></td></tr>
+        <tr><td>Saldo Fonds Q1 2026</td><td class="num">−3,0 Mrd €</td><td><span class="pill p-red">Quartalsdefizit</span></td></tr>
+        <tr><td>Bundeszuschuss 2025 + 2026</td><td class="num">4,0 Mrd €</td><td><span class="pill p-clay">Sondermittel</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Soziale Pflegeversicherung — der akutere Fall</caption>
+      <thead><tr><th>Kennzahl</th><th class="num">Wert</th><th>Einordnung</th></tr></thead>
+      <tbody>
+        <tr><td>Beitragssatz 2026</td><td class="num">3,6 %</td><td><span class="pill p-clay">Kinderlose: 4,2 %</span></td></tr>
+        <tr><td>Defizit 2026 (laufend)</td><td class="num">~1 Mrd €</td><td><span class="pill p-red">strukturell</span></td></tr>
+        <tr><td>Defizit inkl. Bund-Darlehen</td><td class="num">~4,2 Mrd €</td><td><span class="pill p-red">Bund leiht, zahlt nicht zu</span></td></tr>
+        <tr><td>Drohendes 2-Jahres-Loch</td><td class="num">~22,5 Mrd €</td><td><span class="pill p-red">ohne Reform</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Der Unterschied ist wichtig: Die Krankenversicherung bekommt echte Bundeszuschüsse, die Pflege­versicherung
+  2026 nur ein <strong>rückzahlbares Darlehen</strong>. Der Bundesrechnungshof warnt ausdrücklich vor einer
+  „Finanzkrise in der Pflegeversicherung".</p>
+</section>
+
+<!-- ===================== MECHANIK ===================== -->
+<section>
+  <span class="sec-num">Wie es funktioniert</span>
+  <h2>Warum das System nicht pleitegeht — aber teurer wird</h2>
+  <p>Vier Mechanismen erklären fast alles:</p>
+  <ul class="rich">
+    <li><strong>Umlageverfahren.</strong> Es wird nichts angespart. Die Beiträge der heute Arbeitenden zahlen
+    direkt die Behandlung der heute Kranken. Deshalb wirkt die Alterung der Gesellschaft so unmittelbar.</li>
+    <li><strong>Der Zusatzbeitrag ist das Ventil.</strong> Steigen die Ausgaben, muss er hoch — das System
+    wird teurer statt insolvent. Der Preis erscheint beim Versicherten, nicht als Pleite der Kasse.</li>
+    <li><strong>Die Kassen haften füreinander.</strong> Ginge einer Kasse das Geld aus, würde sie geschlossen
+    oder fusioniert — die übrigen übernehmen Versicherte und Ansprüche. Der Schutz der Versicherten ist immer
+    gesichert.</li>
+    <li><strong>Systemfremde Lasten.</strong> Der Staat legt Aufgaben auf die Kassen (etwa zu niedrige
+    Beiträge für Bürgergeld-Empfänger). Ein Teil des Defizits ist politisch verursacht, nicht medizinisch.</li>
+  </ul>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+    A["Alterung: geburtenstarke<br/>Jahrgänge gehen in Rente"] --> B["Mehr Leistungsempfänger,<br/>höhere Kosten pro Kopf"]
+    A --> C["Weniger Beitragszahler<br/>je Empfänger"]
+    B --> D["Ausgaben steigen ~8 %/Jahr"]
+    C --> E["Einnahmen wachsen<br/>nur ~4 %/Jahr"]
+    D --> F["Finanzierungslücke"]
+    E --> F
+    F --> G["Beiträge steigen"]
+    G --> H["Höhere Lohnnebenkosten,<br/>wachsender Druck"]
+    H --> I{"Reaktion der Politik"}
+    I -->|"nur Beiträge rauf"| G
+    I -->|"echte Strukturreform"| J["Ausgaben bremsen +<br/>Einnahmebasis verbreitern"]
+    J -.entlastet.-> F
+    classDef risk fill:#f4ded5,stroke:#b0402c,color:#26231c;
+    classDef ctx fill:#f2e2d6,stroke:#b8552f,color:#26231c;
+    classDef fix fill:#e7efe0,stroke:#4b7a4e,color:#26231c;
+    class A,B,C,D,E,F,G,H risk; class I ctx; class J fix;
+    </div>
+    <div class="cap">Der Kreislauf der Umlagefinanzierung. Der einzige echte Ausweg ist der grüne Pfad —
+    solange nur „Beiträge rauf" gewählt wird, dreht sich die Schleife weiter.</div>
+  </div>
+</section>
+
+<!-- ===================== AUSBLICK ===================== -->
+<section>
+  <span class="sec-num">Ausblick</span>
+  <h2>Die nächsten 5, 10 und 15 Jahre</h2>
+  <div class="note">
+    <div class="nl">Lesehinweis</div>
+    <p>Die folgenden Zahlen sind <strong>Prognosen und Szenarien</strong> offizieller Institutionen, keine
+    feststehenden Fakten. Sie zeigen die Richtung, nicht das exakte Jahr.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Krankenversicherung — Gesamtbeitrag (heute ~17,5 %)</caption>
+      <thead><tr><th>Zeithorizont</th><th class="num">günstig</th><th class="num">Kostendruck</th></tr></thead>
+      <tbody>
+        <tr><td>um 2030 (~5 Jahre)</td><td class="num">Zusatzbeitrag ~3–4 %</td><td class="num">bis 4,7 %</td></tr>
+        <tr><td>um 2035 (~10 Jahre)</td><td class="num">19,3 %</td><td class="num">21,5 %</td></tr>
+        <tr><td>um 2050 (~25 Jahre)</td><td class="num">20,2 %</td><td class="num">bis 26 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Pflegeversicherung — Beitragssatz (heute 3,6 % / kinderlos 4,2 %)</caption>
+      <thead><tr><th>Zeithorizont</th><th class="num">moderat</th><th class="num">Kostendruck</th></tr></thead>
+      <tbody>
+        <tr><td>um 2030 (~5 Jahre)</td><td class="num">~4,2 %</td><td class="num">bis 5,9 % (kinderlos)</td></tr>
+        <tr><td>um 2040 (~15 Jahre)</td><td class="num">~4,3 %</td><td class="num">5 – 8 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="disc">Zahl der Pflegebedürftigen bis 2040: über 6 Millionen (heute rund 5,7 Mio) — bei gleichzeitig
+  sinkender Zahl der Beitragszahler. Die Finanzierungslücke der Krankenversicherung könnte bis 2040 auf rund
+  50 Mrd € pro Jahr wachsen.</p>
+
+  <h3>Was konkret ansteht</h3>
+  <div class="tl hard"><div class="yr">2026 – 2027 · jetzt</div><div class="bd">Reform-Entscheidung wird erzwungen: das Pflege-Neuordnungsgesetz und ein Beitrags-Stabilisierungsgesetz sind im Verfahren. Eine Finanzkommission hat 66 Reformvorschläge vorgelegt (Wirkung ~42 Mrd € für 2027). Würde alles umgesetzt, ließe sich der Zusatzbeitrag rechnerisch auf ~2,1 % senken — der Test für „echte Reform statt nur Beitragserhöhung".</div></div>
+  <div class="tl soft"><div class="yr">bis ~2031 · 5 Jahre</div><div class="bd">Die geburtenstarken Jahrgänge gehen massenhaft in Rente — die Einnahmebasis kippt spürbar. Ohne tiefe Reform steigen die Beiträge weiter, kleinere Kassen fusionieren. Insolvenzen bleiben aus.</div></div>
+  <div class="tl hard"><div class="yr">bis ~2036 · 10 Jahre</div><div class="bd">Im Kostendruck-Szenario nähert sich der Kranken-Gesamtbeitrag 21 %. Die Pflege ist strukturell am kritischsten. Die Grundsatzdebatte — Bürgerversicherung oder mehr private Vorsorge — wird unausweichlich. Höhere Eigenanteile und ein engerer Leistungskatalog sind realistisch.</div></div>
+  <div class="tl hard"><div class="yr">bis ~2041 · 15 Jahre</div><div class="bd">Der demografische Höhepunkt naht, wenn die Babyboomer selbst pflegebedürftig werden. Bis dahin ist entweder strukturell reformiert — oder Beiträge und Eigenanteile sind deutlich höher und die Leistungen schmaler.</div></div>
+</section>
+
+<!-- ===================== PFLEGE DETAIL ===================== -->
+<section>
+  <span class="sec-num">Pflege im Detail</span>
+  <h2>Pflegegrade heute — und was sich ändert</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <caption>Pflegegeld 2026 (häusliche Pflege, unverändert seit 2025)</caption>
+      <thead><tr><th>Pflegegrad</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
+      <tbody>
+        <tr><td>monatlich</td><td class="num">347 €</td><td class="num">599 €</td><td class="num">800 €</td><td class="num">990 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="rich">
+    <li><strong>Entlastungsbetrag 131 €/Monat</strong> für alle Pflegegrade.</li>
+    <li><strong>Seit Juli 2025:</strong> Verhinderungs- und Kurzzeitpflege sind zu einem gemeinsamen Jahresbetrag
+    von <strong>3.539 €</strong> zusammengefasst — flexibler nutzbar.</li>
+    <li>Die Leistungen wurden Anfang 2025 um 4,5 % erhöht und bleiben bis 2027 eingefroren. Die nächste
+    planmäßige Erhöhung kommt erst <strong>2028</strong> — real also ein Kaufkraftverlust.</li>
+  </ul>
+
+  <h3>Die geplante Reform (Pflege-Neuordnungsgesetz)</h3>
+  <p>Der Gesetzentwurf von Juni 2026 ist <strong>noch nicht beschlossen</strong> — bis dahin gelten die heutigen
+  Ansprüche weiter. Geplant ist im Kern: höhere Beiträge, gezieltere Leistungen, strengerer Zugang.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Geplante Änderung</th><th>Wirkung</th></tr></thead>
+      <tbody>
+        <tr><td>Höhere Schwellen für Pflegegrade 1–3</td><td>Es werden mehr Begutachtungspunkte nötig — der Zugang wird enger <span class="pill p-red">Kürzung</span></td></tr>
+        <tr><td>Entlastungsbetrag für Pflegegrad 1 entfällt</td><td>Ersatz durch eine neue „Pflegebegleitung" <span class="pill p-red">Kürzung</span></td></tr>
+        <tr><td>Pflegegeld wird zu einem „Entlastungsbudget" (ab 2027)</td><td>Einzelansprüche werden gebündelt <span class="pill p-amber">Umbau</span></td></tr>
+        <tr><td>Rentenbeiträge für pflegende Angehörige −30 %</td><td>Betrifft Pflege ab Grad 2, ab 10 Std./Woche <span class="pill p-red">Kürzung</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note warm">
+    <div class="nl">Der wunde Punkt der Pflege</div>
+    <p>Die Pflegeversicherung ist bewusst nur eine <strong>Teilkasko</strong> — sie deckt nie die vollen Kosten.
+    Der <strong>Eigenanteil im Pflegeheim</strong> steigt seit Jahren am schnellsten und liegt vielerorts über
+    2.500–3.000 € im Monat. Genau hier — nicht bei „Kasse pleite" — trifft die Krise die Familien direkt.</p>
+  </div>
+</section>
+
+<!-- ===================== ANBIETERSEITE / BRANCHE ===================== -->
+<section>
+  <span class="sec-num">Die Anbieterseite</span>
+  <h2>Wo das System wirklich pleitegeht: die Pflegebranche</h2>
+  <p class="lead">Die aufschlussreichste Wendung: Nicht die Kassen gehen pleite, sondern ihre
+  Leistungserbringer. Der Kostendruck entlädt sich nicht oben bei den Kassen, sondern unten — bei Pflegeheimen,
+  ambulanten Diensten und ihrem Personal.</p>
+
+  <div class="mark-legend">
+    <span class="li"><span class="mark f">belegt</span> Zahl mit Quelle</span>
+    <span class="li"><span class="mark a">Einschätzung</span> eigene Interpretation / Branchen-Vorausahnung</span>
+  </div>
+
+  <h3>Das „Heimsterben" ist real <span class="mark f">belegt</span></h3>
+  <p>Über <strong>1.000 Pflegeeinrichtungen</strong> sind in der aktuellen Insolvenz- und Schließungswelle
+  betroffen. Allein in NRW meldeten 2025 23 Einrichtungen Insolvenz, 63 weitere schlossen (davon 34 ambulante
+  Dienste). Der Grund ist eine <strong>Kostenschere</strong>: Löhne stiegen bei manchen Anbietern um 30–50 %
+  (Tariftreue), aber die Vergütung mit den Kassen lässt sich nur einmal jährlich und im Voraus verhandeln — das
+  wirtschaftliche Risiko dazwischen trägt der Betreiber.</p>
+
+  <div class="note">
+    <div class="nl">Der Mechanismus dahinter <span class="mark a" style="margin-left:6px">Einschätzung</span></div>
+    <p>Das ist die Kehrseite von „Kassen gehen nicht pleite": Weil die Kasse ihren Preis — den Beitrag —
+    jederzeit anheben kann, der Pflegeanbieter seinen aber nicht, wandert das Insolvenzrisiko systematisch von
+    oben nach unten. Wer wissen will, wo die Finanzkrise real zuschlägt, schaut nicht auf die Kassen, sondern
+    auf die Heime und Dienste.</p>
+  </div>
+
+  <h3>Personal ist die eigentliche Knappheit <span class="mark f">belegt</span></h3>
+  <p>Bis 2035 fehlen je nach Rechnung 300.000 bis 500.000 Pflegekräfte, bis 2049 sogar bis zu 690.000
+  (Statistisches Bundesamt). Schon heute verlassen 23 % der examinierten Kräfte den Beruf binnen fünf Jahren,
+  nur 9 % der Jugendlichen können sich Pflege als Beruf vorstellen. Geld ist nur die halbe Krise — die andere
+  Hälfte ist fehlendes Personal.</p>
+
+  <h3>Leiharbeit unter politischem Druck <span class="mark f">belegt</span></h3>
+  <p>Die Zeitarbeit in der Pflege ist rückläufig (−4 % auf rund 32.000 Kräfte, nur noch 1,8 % Anteil) und steht
+  politisch unter Druck: Bundesrat und Ministerium wollen Leiharbeit einschränken — über Fortbildungspflichten,
+  Kostenbegrenzung, gemeinsame Springerkonzepte und Einbindung in die Ausbildungsfinanzierung. Ziel ist, auf
+  Leihpersonal nur noch in Ausnahmen zurückzugreifen.</p>
+
+  <div class="note warm">
+    <div class="nl">Was Branchen-Vorahnungen wahrscheinlich meinen <span class="mark a" style="margin-left:6px">Einschätzung</span></div>
+    <p>Wenn intern von „es wird enger" die Rede ist, passt das ins Bild: Der Markt <strong>konsolidiert</strong>
+    — kleine Anbieter verschwinden, Ketten und größere Träger übernehmen. Personaldienstleister im Pflegebereich
+    bekommen regulatorischen Gegenwind, und der Wettbewerb verschiebt sich vom Preis zur
+    <strong>Personalverfügbarkeit</strong>.</p>
+    <p>Für Beschäftigte heißt das paradoxerweise Sicherheit im Kern: Der Fachkräftemangel sichert die Nachfrage
+    nach Arbeitskraft dauerhaft. Die Unsicherheit liegt eher beim Arbeitgeber-Geschäftsmodell — welche Träger
+    und Dienstleister die Kostenschere überleben — als beim einzelnen Arbeitsplatz.</p>
+  </div>
+</section>
+
+<!-- ===================== EINORDNUNG ===================== -->
+<section>
+  <span class="sec-num">Einordnung</span>
+  <h2>Was das für Versicherte bedeutet</h2>
+  <ul class="rich">
+    <li><strong>„Pleite" ist das falsche Bild.</strong> Die richtige Sorge ist nicht der Zusammenbruch,
+    sondern die schleichende Verteuerung bei gleichzeitig dünner werdenden Leistungen.</li>
+    <li><strong>Die Pflege ist das größere Risiko</strong> als die Krankenversicherung — kleinere Basis, kein
+    echter Bundeszuschuss, härtere Demografie. Wer die Lage verstehen will, schaut auf die Pflege.</li>
+    <li><strong>Beiträge steigen so oder so</strong> — selbst im günstigen Szenario. Offen ist nur, wie stark
+    und wer zahlt: Beitragszahler, Steuerzahler oder Versicherte über den Eigenanteil.</li>
+    <li><strong>Bei der Kassenwahl</strong> zählen Leistungen und Service mehr als 0,1 % Beitragsunterschied —
+    der Zusatzbeitrag ändert sich ohnehin jährlich.</li>
+    <li><strong>Private Pflegevorsorge</strong> gewinnt mit jeder Reform an Bedeutung, weil die Eigenanteile
+    politisch nicht gedeckelt, sondern eher wachsen werden.</li>
+  </ul>
+</section>
+
+<!-- ===================== SCHLÜSSEL ===================== -->
+<section>
+  <span class="sec-num">Zum Weiterdenken</span>
+  <h2>Sechs Begriffe, die alles erklären</h2>
+  <div class="keys">
+    <div class="key"><div class="kt">Umlageverfahren</div><div class="kb">Kein Sparkonto — heutige Beiträge zahlen heutige Kosten. Deshalb ist Demografie der Hauptschalter.</div></div>
+    <div class="key"><div class="kt">Zusatzbeitrag</div><div class="kb">Die eine Stellschraube, die alles ausgleicht. Steigt sie, ist das Systemlogik, kein Skandal.</div></div>
+    <div class="key"><div class="kt">Gesundheitsfonds</div><div class="kb">Der zentrale Topf, der alle Beiträge sammelt und nach Krankheitslast an die Kassen verteilt.</div></div>
+    <div class="key"><div class="kt">Haftungsverbund</div><div class="kb">Die Kassen haften füreinander — deshalb ist eine echte Insolvenz praktisch ausgeschlossen.</div></div>
+    <div class="key"><div class="kt">Babyboomer-Effekt</div><div class="kb">Die größten Jahrgänge wechseln von Beitragszahlern zu Leistungsempfängern. Der Kern der Prognosen.</div></div>
+    <div class="key"><div class="kt">Teilkasko-Prinzip</div><div class="kb">Die Pflegeversicherung deckt nie die vollen Kosten — der wachsende Eigenanteil ist die eigentliche Last.</div></div>
+  </div>
+  <div class="note">
+    <div class="nl">Die eine Frage dahinter</div>
+    <p><strong>Wer trägt die Last der alternden Gesellschaft — die Beitragszahler, die Steuerzahler oder die
+    Versicherten über höhere Eigenanteile?</strong> Jede Reform der nächsten 15 Jahre ist im Kern eine Antwort
+    auf genau diese Frage.</p>
+  </div>
+</section>
+
+<!-- ===================== QUELLEN ===================== -->
+<section>
+  <span class="sec-num">Quellen</span>
+  <h2>Zum Nachlesen</h2>
+  <ul class="src">
+    <li><a href="https://www.bundesgesundheitsministerium.de/ministerium/meldungen/finanzentwicklung-der-gkv-im-1-quartal-2026-pm-19-06-2026-1" target="_blank" rel="noopener">Bundesgesundheitsministerium — Finanzentwicklung der GKV im 1. Quartal 2026</a> — die offiziellen Ist-Zahlen</li>
+    <li><a href="https://www.bundesrechnungshof.de/SharedDocs/Kurzmeldungen/DE/2025/finanzlage-gkv/finanzlage-gkv-kurzmeldung.html" target="_blank" rel="noopener">Bundesrechnungshof — Dringender Reformbedarf bei der GKV</a> — unabhängige Warnung, auch zur Pflege</li>
+    <li><a href="https://www.bundesamtsozialesicherung.de/de/themen/gesundheitsfonds/ueberblick/" target="_blank" rel="noopener">Bundesamt für Soziale Sicherung — Gesundheitsfonds</a> — der Ausgleichsfonds erklärt</li>
+    <li><a href="https://www.pkv.de/verband/presse/meldungen/neue-prognose-fuer-gkv-beitragssatz-wirtschaftsstandort-droht-enorme-belastung/" target="_blank" rel="noopener">PKV-Verband — GKV-Beitragssatz-Prognose bis 2050</a> — Szenarien</li>
+    <li><a href="https://www.bertelsmann-stiftung.de/de/unsere-projekte/zukunft-pflege/projektnachrichten/pflegekostenprognose" target="_blank" rel="noopener">Bertelsmann-Stiftung — Pflegekostenprognose bis 2045</a></li>
+    <li><a href="https://www.pflege.de/pflegegesetz-pflegerecht/pflegeneuordnungsgesetz-pnog/" target="_blank" rel="noopener">pflege.de — Pflege-Neuordnungsgesetz verständlich erklärt</a></li>
+    <li><a href="https://www.gesetze-im-internet.de/sgb_5/__160.html" target="_blank" rel="noopener">§ 160 SGB V — Insolvenz von Krankenkassen (Gesetzestext)</a></li>
+  </ul>
+  <h3>Pflegebranche &amp; Personal</h3>
+  <ul class="src">
+    <li><a href="https://www.arbeitgeberverband-pflege.de/newsroom/pressemitteilungen/details/neue-deutschlandkarte-zeigt-erschreckendes-ausmass-des-heimsterbens-schon-ueber-1000-einrichtungen-betroffen/" target="_blank" rel="noopener">Arbeitgeberverband Pflege — „Heimsterben": über 1.000 Einrichtungen betroffen</a></li>
+    <li><a href="https://www.altenheim.net/pflege-in-nrw-23-insolvenzen-und-63-weitere-schliessungen-im-jahr-2025/" target="_blank" rel="noopener">Altenheim — Pflege in NRW: 23 Insolvenzen, 63 Schließungen 2025</a></li>
+    <li><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/01/PD24_033_23_12.html" target="_blank" rel="noopener">Statistisches Bundesamt — bis zu 690.000 fehlende Pflegekräfte bis 2049</a></li>
+    <li><a href="https://www.cmshs-bloggt.de/arbeitsrecht/bundesrat-fordert-reduzierung-der-leiharbeit-in-der-pflege/" target="_blank" rel="noopener">CMS — Bundesrat fordert Reduzierung der Leiharbeit in der Pflege</a></li>
+  </ul>
+  <div class="legend">
+    <span class="pill p-green">stabil</span>
+    <span class="pill p-amber">fragil / beobachten</span>
+    <span class="pill p-red">strukturelles Risiko</span>
+    <span class="pill p-clay">Kontext</span>
+  </div>
+</section>
+
+<footer>
+  Zusammengestellt aus öffentlichen Quellen · Stand 1. Juli 2026 · rein informativer Überblick,
+  keine Steuer- oder Versicherungsberatung.
+</footer>
+
+</div>
+<script>
+  try{
+    mermaid.initialize({
+      startOnLoad:true, theme:'base',
+      themeVariables:{
+        fontFamily:'Source Sans 3, -apple-system, sans-serif', fontSize:'14px',
+        lineColor:'#b8a88a', primaryColor:'#faf6ec', primaryTextColor:'#26231c', primaryBorderColor:'#d8cfb8'
+      }
+    });
+  }catch(e){}
+</script>
+</body>
+</html>
